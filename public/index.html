@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSphere | Node.js & MongoDB Blog Platform</title>
+  <meta name="description" content="A modern full-stack blog application powered by Node.js, Express, MongoDB, and modern visual frontend.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-cubes"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">DevSphere</span>
+          <span class="brand-badge">Node + Mongo</span>
+        </div>
+      </div>
+
+      <!-- Live Backend Status Widget -->
+      <div class="server-status-pill" id="serverStatusPill" title="Click to view backend diagnostics">
+        <span class="status-indicator live" id="statusDot"></span>
+        <span id="statusText">Connecting...</span>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-secondary" id="apiModalTrigger" title="Open API tester & documentation">
+          <i class="fa-solid fa-code"></i>
+          <span>API Inspector</span>
+        </button>
+        <button class="btn btn-primary" id="newPostBtn">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span>Write Blog</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="fa-solid fa-bolt"></i> Modern Full-Stack Architecture
+        </div>
+        <h1 class="hero-title">
+          Explore Ideas, Code & <span class="gradient-text">Modern Web Tech</span>
+        </h1>
+        <p class="hero-subtitle">
+          Built with <strong>Node.js</strong> backend, <strong>Express.js</strong> REST APIs, <strong>MongoDB</strong> database, and responsive modern frontend UI.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-bar-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search articles by title, tags or content..." 
+            autocomplete="off"
+          />
+          <button class="clear-search-btn" id="clearSearchBtn" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Filters & Stats Row -->
+    <section class="filters-row">
+      <div class="category-pills" id="categoryPills">
+        <button class="pill active" data-cat="All">All Topics</button>
+        <button class="pill" data-cat="Technology">Technology</button>
+        <button class="pill" data-cat="Web Development">Web Development</button>
+        <button class="pill" data-cat="AI & Machine Learning">AI & ML</button>
+        <button class="pill" data-cat="Tutorials">Tutorials</button>
+        <button class="pill" data-cat="Design">Design</button>
+      </div>
+
+      <div class="posts-count-label">
+        Showing <span id="postCountBadge">0</span> articles
+      </div>
+    </section>
+
+    <!-- Articles Grid Section -->
+    <section class="articles-grid" id="articlesGrid">
+      <!-- Loading Skeleton Cards -->
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </section>
+
+    <!-- Empty State Container -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <i class="fa-solid fa-newspaper empty-icon"></i>
+      <h3>No Articles Found</h3>
+      <p>Try modifying your search query or create a brand new blog post.</p>
+      <button class="btn btn-primary" onclick="openNewPostModal()">Create First Post</button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2026 <strong>DevSphere Blog</strong>. Powered by Node.js, Express & MongoDB.</p>
+      <div class="footer-links">
+        <a href="javascript:void(0)" onclick="openApiModal()">API Docs</a>
+        <a href="/api/posts" target="_blank">Raw JSON API</a>
+        <a href="/api/status" target="_blank">Server Health</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Read Post -->
+  <div class="modal-backdrop" id="readModal">
+    <div class="modal-card post-view-modal">
+      <div class="modal-header">
+        <div class="view-category-badge" id="modalPostCategory">Tech</div>
+        <button class="modal-close-btn" onclick="closeReadModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body post-view-body">
+        <div class="view-cover-wrap">
+          <img id="modalPostImage" src="" alt="Blog cover" class="view-cover-image">
+        </div>
+        <div class="view-meta-row">
+          <div class="author-info">
+            <div class="author-avatar" id="modalAuthorInitial">Z</div>
+            <div>
+              <div class="author-name" id="modalPostAuthor">Author</div>
+              <div class="post-date-read">
+                <span id="modalPostDate">Date</span> • <span id="modalPostReadTime">4 min read</span>
+              </div>
+            </div>
+          </div>
+          <div class="view-actions">
+            <button class="btn-icon" id="modalLikeBtn" title="Like this post">
+              <i class="fa-solid fa-heart"></i>
+              <span id="modalLikeCount">0</span>
+            </button>
+            <button class="btn-icon" id="modalEditBtn" title="Edit this post">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn-icon danger" id="modalDeleteBtn" title="Delete post">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+        
+        <h1 class="view-post-title" id="modalPostTitle">Blog Title</h1>
+        
+        <div class="tags-row" id="modalPostTags"></div>
+
+        <div class="view-post-content" id="modalPostContent"></div>
+
+        <!-- Comments Section -->
+        <hr class="divider">
+        <div class="comments-section">
+          <h3><i class="fa-regular fa-comments"></i> Discussion (<span id="modalCommentCount">0</span>)</h3>
+          
+          <form class="comment-form" id="commentForm">
+            <input type="text" id="commentAuthor" placeholder="Your Name" required class="input-field">
+            <div class="comment-input-row">
+              <input type="text" id="commentText" placeholder="Write a comment or feedback..." required class="input-field">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="comments-list" id="modalCommentsList">
+            <!-- Dynamic comments -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Create / Edit Post -->
+  <div class="modal-backdrop" id="editorModal">
+    <div class="modal-card editor-modal-card">
+      <div class="modal-header">
+        <h2 id="editorModalTitle"><i class="fa-solid fa-feather"></i> Write New Article</h2>
+        <button class="modal-close-btn" onclick="closeEditorModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form id="postForm" class="modal-body form-body">
+        <input type="hidden" id="postIdInput">
+
+        <div class="form-group">
+          <label for="postTitle">Article Title *</label>
+          <input 
+            type="text" 
+            id="postTitle" 
+            placeholder="e.g., Master Full-Stack Web Development in 2026" 
+            required 
+            class="input-field"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postCategory">Category *</label>
+            <select id="postCategory" class="input-field" required>
+              <option value="Technology">Technology</option>
+              <option value="Web Development">Web Development</option>
+              <option value="AI & Machine Learning">AI & Machine Learning</option>
+              <option value="Tutorials">Tutorials</option>
+              <option value="Design">Design</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="postAuthor">Author Name</label>
+            <input 
+              type="text" 
+              id="postAuthor" 
+              placeholder="e.g., Zahid Shafiq" 
+              value="Zahid Shafiq" 
+              class="input-field"
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postTags">Tags (comma separated)</label>
+            <input 
+              type="text" 
+              id="postTags" 
+              placeholder="e.g., Node, MongoDB, Express, API" 
+              class="input-field"
+            >
+          </div>
+          <div class="form-group">
+            <label for="postReadTime">Read Time (minutes)</label>
+            <input 
+              type="number" 
+              id="postReadTime" 
+              value="4" 
+              min="1" 
+              class="input-field"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="postCoverImage">Cover Image URL</label>
+          <input 
+            type="url" 
+            id="postCoverImage" 
+            placeholder="https://images.unsplash.com/..." 
+            value="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80" 
+            class="input-field"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="postSnippet">Summary / Snippet *</label>
+          <textarea 
+            id="postSnippet" 
+            rows="2" 
+            placeholder="Brief overview shown on the card preview..." 
+            required 
+            class="input-field"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="postContent">Full Content (Markdown / Text) *</label>
+          <textarea 
+            id="postContent" 
+            rows="8" 
+            placeholder="Write full article here. Subheadings, bullet points and paragraphs supported..." 
+            required 
+            class="input-field"
+          ></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeEditorModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="savePostBtn">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Publish to Backend
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Backend API Inspector & Architecture Guide -->
+  <div class="modal-backdrop" id="apiModal">
+    <div class="modal-card api-modal-card">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-network-wired"></i> Backend Architecture & API Tester</h2>
+        <button class="modal-close-btn" onclick="closeApiModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body api-modal-body">
+        
+        <!-- Live Status Card -->
+        <div class="diagnostics-card">
+          <div class="diag-header">
+            <h4>Live Server Telemetry</h4>
+            <button class="btn btn-sm btn-secondary" onclick="checkBackendHealth()">
+              <i class="fa-solid fa-rotate"></i> Ping Server
+            </button>
+          </div>
+          <div class="diag-grid" id="diagGrid">
+            <div class="diag-item">
+              <span class="diag-label">Server</span>
+              <span class="diag-val" id="diagServer">Node.js + Express</span>
+            </div>
+            <div class="diag-item">
+              <span class="diag-label">Database</span>
+              <span class="diag-val" id="diagDb">Checking...</span>
+            </div>
+            <div class="diag-item">
+              <span class="diag-label">Port</span>
+              <span class="diag-val" id="diagPort">5000</span>
+            </div>
+            <div class="diag-item">
+              <span class="diag-label">Total Posts</span>
+              <span class="diag-val" id="diagCount">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Endpoints List -->
+        <h4 class="section-title">Available REST API Endpoints</h4>
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="ep-badge get">GET</div>
+            <div class="ep-url">/api/posts</div>
+            <div class="ep-desc">Retrieve list of posts (supports <code>?search=</code>, <code>?category=</code>)</div>
+            <a href="/api/posts" target="_blank" class="ep-test-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge post">POST</div>
+            <div class="ep-url">/api/posts</div>
+            <div class="ep-desc">Create a new blog post with JSON body (title, content, category, etc.)</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge get">GET</div>
+            <div class="ep-url">/api/posts/:id</div>
+            <div class="ep-desc">Retrieve a single blog post by its unique ID</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge put">PUT</div>
+            <div class="ep-url">/api/posts/:id</div>
+            <div class="ep-desc">Update an existing blog post</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge delete">DELETE</div>
+            <div class="ep-url">/api/posts/:id</div>
+            <div class="ep-desc">Permanently remove post from database</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge post">POST</div>
+            <div class="ep-url">/api/posts/:id/like</div>
+            <div class="ep-desc">Increment like counter for an article</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge post">POST</div>
+            <div class="ep-url">/api/posts/:id/comments</div>
+            <div class="ep-desc">Add reader comment to article</div>
+          </div>
+
+          <div class="endpoint-card">
+            <div class="ep-badge get">GET</div>
+            <div class="ep-url">/api/status</div>
+            <div class="ep-desc">Server health, MongoDB status, and uptime</div>
+            <a href="/api/status" target="_blank" class="ep-test-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+        <!-- Architecture Flow -->
+        <h4 class="section-title">Backend Architecture Flow</h4>
+        <div class="arch-box">
+          <div class="arch-step">
+            <div class="step-num">1</div>
+            <div><strong>Browser / Client</strong>: Sends HTTP request via <code>fetch('/api/posts')</code></div>
+          </div>
+          <div class="arch-step">
+            <div class="step-num">2</div>
+            <div><strong>Express Router</strong>: Routes request to matching controller (<code>postController.js</code>)</div>
+          </div>
+          <div class="arch-step">
+            <div class="step-num">3</div>
+            <div><strong>Mongoose Model</strong>: Validates schema and performs MongoDB queries (<code>Post.find()</code>)</div>
+          </div>
+          <div class="arch-step">
+            <div class="step-num">4</div>
+            <div><strong>MongoDB Database</strong>: Stores document data in collections permanently</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

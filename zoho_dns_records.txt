@@ -1,0 +1,16 @@
+; BIND Zone File for Zoho Mail on apexpipelinemedia.com
+$ORIGIN apexpipelinemedia.com.
+$TTL 3600
+
+; --- Zoho Mail MX Records (Email Receiving) ---
+@   IN  MX  10  mx.zoho.com.
+@   IN  MX  20  mx2.zoho.com.
+@   IN  MX  50  mx3.zoho.com.
+
+; --- Zoho SPF Record (Prevent Emails going to Spam) ---
+@   IN  TXT "v=spf1 include:zoho.com ~all"
+
+; --- Zoho DKIM Record (Email Authentication) ---
+; Host/Name: zmail._domainkey
+; Type: TXT
+
