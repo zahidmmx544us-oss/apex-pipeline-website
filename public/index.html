@@ -1,435 +1,617 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevSphere | Node.js & MongoDB Blog Platform</title>
-  <meta name="description" content="A modern full-stack blog application powered by Node.js, Express, MongoDB, and modern visual frontend.">
+  <title>Apex Pipeline Media | Predictable B2B Outbound & Appointment Setting</title>
+  <meta name="description" content="Apex Pipeline Media transforms cold market data into predictable sales meetings. We build dedicated outbound pipelines, guarantee 98%+ data accuracy, and book 15-30 qualified C-suite meetings every month.">
+  <meta name="keywords" content="B2B Appointment Setting, Cold Email Infrastructure, Data Scraping, Lead Generation, Sales Pipeline, Apollo, Instantly">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Apex Pipeline Media - B2B Outbound Engine">
+  <meta property="og:description" content="Turn cold data into booked sales calls. Guaranteed verified C-Level leads & managed cold outreach.">
+  <meta property="og:type" content="website">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background Glow Accents -->
+
+  <!-- Ambient Glow & Futuristic Grid -->
+  <div class="bg-grid-overlay"></div>
   <div class="glow-orb orb-1"></div>
   <div class="glow-orb orb-2"></div>
 
-  <!-- Header / Navigation -->
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Announcement">
+    <span class="badge-live">Q4 Capacity</span>
+    <span>Accepting only <strong>3 new B2B clients</strong> this month for guaranteed outbound pipeline rollout.</span>
+  </aside>
+
+  <!-- Navigation -->
   <header class="navbar">
-    <div class="nav-container">
-      <div class="nav-brand">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
         <div class="brand-icon">
-          <i class="fa-solid fa-cubes"></i>
+          <i class="fa-solid fa-bolt-lightning"></i>
         </div>
         <div class="brand-text">
-          <span class="brand-title">DevSphere</span>
-          <span class="brand-badge">Node + Mongo</span>
+          <span class="brand-title">Apex Pipeline</span>
+          <span class="brand-sub">Media &bull; Outbound Growth</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Live Backend Status Widget -->
-      <div class="server-status-pill" id="serverStatusPill" title="Click to view backend diagnostics">
-        <span class="status-indicator live" id="statusDot"></span>
-        <span id="statusText">Connecting...</span>
-      </div>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#verification">7-Stage Verification</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
 
       <div class="nav-actions">
-        <button class="btn btn-secondary" id="apiModalTrigger" title="Open API tester & documentation">
-          <i class="fa-solid fa-code"></i>
-          <span>API Inspector</span>
-        </button>
-        <button class="btn btn-primary" id="newPostBtn">
-          <i class="fa-solid fa-pen-nib"></i>
-          <span>Write Blog</span>
-        </button>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <i class="fa-solid fa-moon" id="themeIcon"></i>
-        </button>
+        <a href="#sample-form" class="btn btn-secondary">
+          <i class="fa-solid fa-gift"></i>
+          <span>Free 25 Leads</span>
+        </a>
+        <a href="#sample-form" class="btn btn-primary btn-glow">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>Book Strategy Call</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="main-container">
-
-    <!-- Hero Section -->
-    <section class="hero-section">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
       <div class="hero-content">
-        <div class="hero-tag">
-          <i class="fa-solid fa-bolt"></i> Modern Full-Stack Architecture
+        
+        <div class="hero-pill">
+          <span class="pulse-dot"></span>
+          <span>Next-Gen B2B Sales Engine &bull; Zero Fluff, Pure Meetings</span>
         </div>
+
         <h1 class="hero-title">
-          Explore Ideas, Code & <span class="gradient-text">Modern Web Tech</span>
+          Turn Cold Market Data Into <br>
+          <span class="gradient-text">Predictable B2B Sales Pipelines</span>
         </h1>
+
         <p class="hero-subtitle">
-          Built with <strong>Node.js</strong> backend, <strong>Express.js</strong> REST APIs, <strong>MongoDB</strong> database, and responsive modern frontend UI.
+          We help B2B SaaS, Real Estate, Executive Search, and Tech firms book <strong>15–30 qualified decision-maker meetings every month</strong> through surgical data scraping, bulletproof email deliverability, and hyper-targeted multi-channel outreach.
         </p>
 
-        <!-- Search Bar -->
-        <div class="search-bar-wrap">
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Search articles by title, tags or content..." 
-            autocomplete="off"
-          />
-          <button class="clear-search-btn" id="clearSearchBtn" style="display: none;">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+        <div class="hero-cta-group">
+          <a href="#sample-form" class="btn btn-primary btn-glow" style="padding: 1.1rem 2.5rem; font-size: 1.05rem;">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Book A Free Pipeline Strategy Call</span>
+          </a>
+          <a href="#sample-form" class="btn btn-secondary" style="padding: 1.1rem 2rem; font-size: 1.05rem;">
+            <i class="fa-solid fa-database"></i>
+            <span>Request 25-Lead Free Verified Sample</span>
+          </a>
+        </div>
+
+        <div class="cta-guarantee">
+          <span><i class="fa-solid fa-circle-check"></i> 98%+ Verified Delivery</span>
+          <span><i class="fa-solid fa-circle-check"></i> <2% Bounce Rate Guarantee</span>
+          <span><i class="fa-solid fa-circle-check"></i> C-Suite & Decision Makers Only</span>
+          <span><i class="fa-solid fa-circle-check"></i> 100% GDPR & CAN-SPAM Compliant</span>
+        </div>
+
+        <!-- Glass Live Metrics Banner -->
+        <div class="hero-stats-banner">
+          <div class="stat-item">
+            <span class="stat-number">15–30</span>
+            <span class="stat-label">Qualified Calls / Month</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number"><span class="highlight">98.5%</span></span>
+            <span class="stat-label">Contact Verification Accuracy</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">&lt; 1.8%</span>
+            <span class="stat-label">Strict Bounce Rate Guarantee</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.2x</span>
+            <span class="stat-label">Average Outbound ROI</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack Strip -->
+  <section class="tech-stack-section">
+    <div class="container">
+      <p class="tech-stack-title">Engineered With Enterprise-Grade Outbound Technology</p>
+      <div class="tech-logos">
+        <div class="tech-logo-item"><i class="fa-solid fa-rocket"></i> Apollo.io</div>
+        <div class="tech-logo-item"><i class="fa-brands fa-linkedin"></i> Sales Navigator</div>
+        <div class="tech-logo-item"><i class="fa-solid fa-paper-plane"></i> Instantly.ai</div>
+        <div class="tech-logo-item"><i class="fa-solid fa-fire-flame-curved"></i> Smartlead</div>
+        <div class="tech-logo-item"><i class="fa-solid fa-layer-group"></i> Clay.com</div>
+        <div class="tech-logo-item"><i class="fa-brands fa-hubspot"></i> HubSpot CRM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-gears"></i> Core Capabilities</span>
+        <h2>End-to-End Outbound Infrastructure</h2>
+        <p>We don’t just hand you raw spreadsheet lists. We build an automated, high-velocity acquisition system that routinely books appointments right onto your calendar.</p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div>
+            <div class="service-header">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-crosshairs"></i>
+              </div>
+              <span class="service-metric-tag">Zero Spam Traps</span>
+            </div>
+            <h3 class="service-title">Precision ICP & Custom Scraping</h3>
+            <p class="service-desc">
+              Custom targeted data intelligence built for your specific Ideal Customer Profile (ICP). We scrape real-time records directly from active directories, company funding announcements, and job changes.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-check"></i> C-Level, VP, and Director Direct Mobile & Corporate Emails</li>
+              <li><i class="fa-solid fa-check"></i> Multi-source cross-referencing across LinkedIn, Crunchbase & Apollo</li>
+              <li><i class="fa-solid fa-check"></i> Deep custom enrichment (tech stack, headcount, revenue filters)</li>
+            </ul>
+          </div>
+          <a href="#sample-form" class="btn btn-secondary" style="width: 100%;">Get Sample Data</a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div>
+            <div class="service-header">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <span class="service-metric-tag">Primary Inbox Guarantee</span>
+            </div>
+            <h3 class="service-title">Technical Email Deliverability Setup</h3>
+            <p class="service-desc">
+              Never burn your primary company domain. We architect isolated secondary domains with Google Workspace & Microsoft 365 setups, complete with DNS authentication records.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-check"></i> Flawless SPF, DKIM, DMARC & Custom Tracking Domain setup</li>
+              <li><i class="fa-solid fa-check"></i> Automated 21-day bidirectional AI warmup to build 100% sender reputation</li>
+              <li><i class="fa-solid fa-check"></i> Continuous spam-trigger monitoring & real-time MX health checks</li>
+            </ul>
+          </div>
+          <a href="#sample-form" class="btn btn-secondary" style="width: 100%;">Audit Deliverability</a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div>
+            <div class="service-header">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-envelope-open-text"></i>
+              </div>
+              <span class="service-metric-tag">35%+ Open Rates</span>
+            </div>
+            <h3 class="service-title">Multi-Channel Cold Outreach</h3>
+            <p class="service-desc">
+              Neuroscience-backed, highly-personalized messaging campaigns. We combine cold email sequences with LinkedIn touchpoints that trigger actual conversations instead of instant deletions.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-check"></i> Deep AI personalizations based on prospect recent news & achievements</li>
+              <li><i class="fa-solid fa-check"></i> 4 to 6-step multi-touch cadence with value-first offer angles</li>
+              <li><i class="fa-solid fa-check"></i> Dynamic A/B testing on subject lines, hooks, and call-to-actions</li>
+            </ul>
+          </div>
+          <a href="#sample-form" class="btn btn-secondary" style="width: 100%;">Review Copy Frameworks</a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <div>
+            <div class="service-header">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <span class="service-metric-tag">Sales Ready Only</span>
+            </div>
+            <h3 class="service-title">Qualified Appointment Setting</h3>
+            <p class="service-desc">
+              We handle the entire objection handling, inbox triage, and qualification process. Only prospects with active purchasing intent and verified budgets land on your sales calendar.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-check"></i> Dedicated inbox managers handling all replies within 15 minutes</li>
+              <li><i class="fa-solid fa-check"></i> Strict qualification criteria (BANT) before confirmation</li>
+              <li><i class="fa-solid fa-check"></i> Direct integration into your Calendly, HubSpot, or CRM pipeline</li>
+            </ul>
+          </div>
+          <a href="#sample-form" class="btn btn-secondary" style="width: 100%;">Scale Your Calendar</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7-Stage Data Verification Engine (Inspired by UK Marketing Management) -->
+  <section class="verification-section" id="verification">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-certificate"></i> Unmatched Quality</span>
+        <h2>Our 7-Stage Data Verification Protocol</h2>
+        <p>Cheap brokers sell outdated, recycled CSVs with 20% bounce rates that destroy your domains. Apex Pipeline Media runs every single record through a proprietary 7-stage validation pipeline before it touches your campaign.</p>
+      </div>
+
+      <div class="verification-grid">
+        
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 01</span>
+          <h3>Syntax & Regex Filter</h3>
+          <p>Instant removal of malformed email syntax, duplicate entries, rogue characters, and RFC-noncompliant addresses.</p>
+        </div>
+
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 02</span>
+          <h3>MX & DNS Record Ping</h3>
+          <p>Real-time server handshake confirming that the domain has functional, receiving mail exchange (MX) servers.</p>
+        </div>
+
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 03</span>
+          <h3>SMTP Handshake Verification</h3>
+          <p>Live inbox simulation directly pinging the recipient's mail server without sending an actual message to verify address existence.</p>
+        </div>
+
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 04</span>
+          <h3>Spam Trap & Honeypot Scrub</h3>
+          <p>Scrubbing against known blacklists, spam trap networks, disposable temporary mail providers, and role-based accounts (info@, support@).</p>
+        </div>
+
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 05</span>
+          <h3>Catch-All Server Analysis</h3>
+          <p>Advanced diagnostic checks on accept-all mail servers using proprietary pattern recognition and bounce prediction scoring.</p>
+        </div>
+
+        <div class="verification-card">
+          <span class="step-num-badge">STAGE 06</span>
+          <h3>LinkedIn Employment Verification</h3>
+          <p>Cross-verification that the decision-maker is still actively employed in the stated executive role as of the past 14 days.</p>
+        </div>
+
+        <!-- Banner Summary across all columns -->
+        <div class="verification-summary-banner">
+          <div class="summary-text">
+            <h4><i class="fa-solid fa-shield-check" style="color: #00f5a0; margin-right: 0.5rem;"></i> Stage 07: The 98%+ Delivery Guarantee</h4>
+            <p>If any lead provided by Apex Pipeline Media bounces above 2%, we replace it 2-for-1 immediately at zero cost.</p>
+          </div>
+          <a href="#sample-form" class="btn btn-primary">Test Our Quality Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-route"></i> The Roadmap</span>
+        <h2>How We Scale Your Meetings In 4 Steps</h2>
+        <p>A transparent, high-precision framework designed to launch within 14 days and produce booked appointments within week 3.</p>
+      </div>
+
+      <div class="process-timeline">
+        
+        <div class="process-step-card">
+          <div class="process-number">01</div>
+          <h3>Market Mapping</h3>
+          <p>We analyze your Total Addressable Market (TAM), pinpoint your ideal high-LTV buyers, and uncover your competitors' weaknesses.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-number">02</div>
+          <h3>Infrastructure & Data</h3>
+          <p>We setup isolated secondary outreach domains, configure SPF/DKIM/DMARC, warm mailboxes, and scrape hyper-targeted prospect lists.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-number">03</div>
+          <h3>Launch Campaigns</h3>
+          <p>We initiate multi-channel cold messaging campaigns featuring persuasive, value-centric copy tested across diverse buyer segments.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-number">04</div>
+          <h3>Qualified Meetings</h3>
+          <p>Our team handles responses, answers questions, filters tire-kickers, and books qualified meetings directly on your sales team's calendar.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="industries-section" id="industries">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Specialized Niches</span>
+        <h2>Industries We Scale Daily</h2>
+        <p>Outbound only succeeds when tailored to specific industry psychology. We specialize in four core high-ticket sectors:</p>
+      </div>
+
+      <div class="industries-grid">
+        
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>B2B SaaS & Tech</h3>
+          <p>Booking demos with CTOs, VP Engineering, and Product Heads for high-ACV software subscriptions.</p>
+        </div>
+
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fa-solid fa-building"></i></div>
+          <h3>Commercial Real Estate</h3>
+          <p>Connecting developers, brokers, and asset managers with institutional investors and high-net-worth buyers.</p>
+        </div>
+
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>Executive Recruitment</h3>
+          <p>Securing retained search contracts with Founders, CHROs, and VP HR needing key senior talent.</p>
+        </div>
+
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+          <h3>E-Commerce & Agency</h3>
+          <p>Connecting digital service providers, supply chain SaaS, and marketing agencies with direct brand owners.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Converting CTA / Free Sample Section -->
+  <section class="cta-form-section" id="sample-form">
+    <div class="container">
+      <div class="cta-box-wrapper">
+        <div class="cta-grid">
+          
+          <div class="cta-info">
+            <span class="section-tag"><i class="fa-solid fa-sparkles"></i> 100% Risk-Free Offer</span>
+            <h2>Test Our Data Quality Before Committing.</h2>
+            <p>
+              Tell us your target geography, job title, and industry. We will personally scrape, verify through our 7-stage protocol, and deliver <strong>25 verified decision-maker leads directly to your inbox — 100% free of charge</strong>.
+            </p>
+
+            <ul class="sample-perks">
+              <li><i class="fa-solid fa-check-circle"></i> 25 Custom-scraped C-Suite or VP leads matching your exact ICP</li>
+              <li><i class="fa-solid fa-check-circle"></i> Direct business emails + direct LinkedIn URLs + Phone where available</li>
+              <li><i class="fa-solid fa-check-circle"></i> Full deliverability audit for your current outbound setup</li>
+              <li><i class="fa-solid fa-check-circle"></i> No credit card required, zero obligation to purchase</li>
+            </ul>
+
+            <div class="trust-badge-row">
+              <div class="trust-item"><i class="fa-solid fa-shield-check"></i> GDPR Compliant</div>
+              <div class="trust-item"><i class="fa-solid fa-clock"></i> 24-Hour Turnaround</div>
+              <div class="trust-item"><i class="fa-solid fa-envelope"></i> contact@apexpipelinemedia.com</div>
+            </div>
+          </div>
+
+          <!-- Interactive Request Form -->
+          <div class="form-card">
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.35rem; color: #ffffff;">Claim Your Free 25 Leads</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">Fill out this 30-second form to initiate your custom data run.</p>
+
+            <form id="leadRequestForm">
+              <div class="form-group">
+                <label class="form-label" for="clientName">Your Full Name *</label>
+                <input class="form-input" type="text" id="clientName" placeholder="e.g. Zahid Shafiq" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientEmail">Your Business Email *</label>
+                <input class="form-input" type="email" id="clientEmail" placeholder="e.g. name@yourcompany.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientCompany">Company Website / LinkedIn *</label>
+                <input class="form-input" type="text" id="clientCompany" placeholder="e.g. https://yourcompany.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientICP">Target Decision Maker & Industry *</label>
+                <input class="form-input" type="text" id="clientICP" placeholder="e.g. US Tech CEOs or UK Real Estate Directors" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="preferredCall">Select Option</label>
+                <select class="form-select" id="preferredCall">
+                  <option value="leads_and_strategy">Send Free 25 Leads + Schedule Strategy Call</option>
+                  <option value="leads_only">Send Free 25 Leads via Email First</option>
+                  <option value="instant_call">I want to book an immediate 15-min strategy call</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-glow form-submit-btn" id="submitFormBtn">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Get 25 Free Leads & Pipeline Blueprint</span>
+              </button>
+
+              <div class="form-disclaimer">
+                <i class="fa-solid fa-lock" style="margin-right: 4px;"></i> We respect your privacy. No spam. 100% Confidential.
+              </div>
+
+              <div class="form-notification" id="formSuccessMessage">
+                <strong><i class="fa-solid fa-circle-check"></i> Request Received!</strong><br>
+                Our data research team has received your criteria. We are building your 25 verified leads and will dispatch them to your email shortly.
+              </div>
+            </form>
+          </div>
+
         </div>
       </div>
-    </section>
-
-    <!-- Category Filters & Stats Row -->
-    <section class="filters-row">
-      <div class="category-pills" id="categoryPills">
-        <button class="pill active" data-cat="All">All Topics</button>
-        <button class="pill" data-cat="Technology">Technology</button>
-        <button class="pill" data-cat="Web Development">Web Development</button>
-        <button class="pill" data-cat="AI & Machine Learning">AI & ML</button>
-        <button class="pill" data-cat="Tutorials">Tutorials</button>
-        <button class="pill" data-cat="Design">Design</button>
-      </div>
-
-      <div class="posts-count-label">
-        Showing <span id="postCountBadge">0</span> articles
-      </div>
-    </section>
-
-    <!-- Articles Grid Section -->
-    <section class="articles-grid" id="articlesGrid">
-      <!-- Loading Skeleton Cards -->
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-    </section>
-
-    <!-- Empty State Container -->
-    <div class="empty-state" id="emptyState" style="display: none;">
-      <i class="fa-solid fa-newspaper empty-icon"></i>
-      <h3>No Articles Found</h3>
-      <p>Try modifying your search query or create a brand new blog post.</p>
-      <button class="btn btn-primary" onclick="openNewPostModal()">Create First Post</button>
     </div>
+  </section>
 
-  </main>
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Clear Answers</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about working with Apex Pipeline Media.</p>
+      </div>
+
+      <div class="faq-container">
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How is Apex Pipeline Media different from data brokers like ZoomInfo or Apollo?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Database brokers sell massive, self-serve directories that contain outdated emails, retired executives, and spam traps. You still have to buy expensive tools, set up secondary domains, write copy, and manage responses. We are an end-to-end partner: we extract fresh, real-time data, verify it through our 7-stage protocol, manage outbound infrastructure, and deliver booked meetings straight onto your calendar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Will cold email outreach damage our primary domain reputation?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Never. We never send outbound outreach from your core company domain. We purchase and configure isolated secondary domains (e.g. <code>getapexmedia.com</code> or <code>tryapex.com</code>) that redirect to your main site. We configure complete SPF, DKIM, and DMARC protocols and warm up each mailbox for 21 days before sending any campaign.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What happens if an email bounces?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We provide a strict &lt; 2% bounce rate guarantee. If any record supplied in your campaigns bounces beyond this threshold, we credit and replace those records 2-for-1 immediately.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How fast can we launch campaigns?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our standard onboarding takes 14 days. This window is strictly required to properly register secondary domains, configure authentication records, and perform essential automated mailbox warmup to guarantee maximum deliverability.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do you qualify booked appointments?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Before any prospect is booked onto your calendar, our inbox managers verify that they match your specific revenue tier, employee count, and purchasing authority. We never book low-level gatekeepers or unqualified tire-kickers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <p>© 2026 <strong>DevSphere Blog</strong>. Powered by Node.js, Express & MongoDB.</p>
-      <div class="footer-links">
-        <a href="javascript:void(0)" onclick="openApiModal()">API Docs</a>
-        <a href="/api/posts" target="_blank">Raw JSON API</a>
-        <a href="/api/status" target="_blank">Server Health</a>
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-col-about">
+          <a href="#" class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="brand-icon">
+              <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title">Apex Pipeline</span>
+              <span class="brand-sub">Media</span>
+            </div>
+          </a>
+          <p>
+            The premier B2B Outbound Growth & Appointment Setting Agency. Transforming cold market data into predictable sales pipeline and qualified executive meetings.
+          </p>
+          <div style="margin-top: 1.25rem; display: flex; gap: 0.8rem;">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:contact@apexpipelinemedia.com" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Outbound Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Precision ICP Scraping</a></li>
+            <li><a href="#services">Deliverability Engineering</a></li>
+            <li><a href="#services">Multi-Channel Sequences</a></li>
+            <li><a href="#services">Qualified Appointment Setting</a></li>
+            <li><a href="#verification">7-Stage Data Verification</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Target Industries</h4>
+          <ul class="footer-links">
+            <li><a href="#industries">B2B SaaS & Tech</a></li>
+            <li><a href="#industries">Commercial Real Estate</a></li>
+            <li><a href="#industries">Executive Recruitment</a></li>
+            <li><a href="#industries">High-Ticket Agencies</a></li>
+            <li><a href="#process">Our 4-Step Process</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact & Inquiries</h4>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>contact@apexpipelinemedia.com</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-globe"></i>
+            <span>apexpipelinemedia.com</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>100% Verified Outbound</span>
+          </div>
+          <div style="margin-top: 1.25rem;">
+            <a href="#sample-form" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Claim Free Leads</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Apex Pipeline Media. All rights reserved.
+        </div>
+        <div>
+          GDPR & CAN-SPAM Compliant Enterprise Outbound Agency.
+        </div>
       </div>
     </div>
   </footer>
-
-  <!-- Modal: Read Post -->
-  <div class="modal-backdrop" id="readModal">
-    <div class="modal-card post-view-modal">
-      <div class="modal-header">
-        <div class="view-category-badge" id="modalPostCategory">Tech</div>
-        <button class="modal-close-btn" onclick="closeReadModal()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="modal-body post-view-body">
-        <div class="view-cover-wrap">
-          <img id="modalPostImage" src="" alt="Blog cover" class="view-cover-image">
-        </div>
-        <div class="view-meta-row">
-          <div class="author-info">
-            <div class="author-avatar" id="modalAuthorInitial">Z</div>
-            <div>
-              <div class="author-name" id="modalPostAuthor">Author</div>
-              <div class="post-date-read">
-                <span id="modalPostDate">Date</span> • <span id="modalPostReadTime">4 min read</span>
-              </div>
-            </div>
-          </div>
-          <div class="view-actions">
-            <button class="btn-icon" id="modalLikeBtn" title="Like this post">
-              <i class="fa-solid fa-heart"></i>
-              <span id="modalLikeCount">0</span>
-            </button>
-            <button class="btn-icon" id="modalEditBtn" title="Edit this post">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-            <button class="btn-icon danger" id="modalDeleteBtn" title="Delete post">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </div>
-        </div>
-        
-        <h1 class="view-post-title" id="modalPostTitle">Blog Title</h1>
-        
-        <div class="tags-row" id="modalPostTags"></div>
-
-        <div class="view-post-content" id="modalPostContent"></div>
-
-        <!-- Comments Section -->
-        <hr class="divider">
-        <div class="comments-section">
-          <h3><i class="fa-regular fa-comments"></i> Discussion (<span id="modalCommentCount">0</span>)</h3>
-          
-          <form class="comment-form" id="commentForm">
-            <input type="text" id="commentAuthor" placeholder="Your Name" required class="input-field">
-            <div class="comment-input-row">
-              <input type="text" id="commentText" placeholder="Write a comment or feedback..." required class="input-field">
-              <button type="submit" class="btn btn-primary">
-                <i class="fa-solid fa-paper-plane"></i>
-              </button>
-            </div>
-          </form>
-
-          <div class="comments-list" id="modalCommentsList">
-            <!-- Dynamic comments -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Create / Edit Post -->
-  <div class="modal-backdrop" id="editorModal">
-    <div class="modal-card editor-modal-card">
-      <div class="modal-header">
-        <h2 id="editorModalTitle"><i class="fa-solid fa-feather"></i> Write New Article</h2>
-        <button class="modal-close-btn" onclick="closeEditorModal()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <form id="postForm" class="modal-body form-body">
-        <input type="hidden" id="postIdInput">
-
-        <div class="form-group">
-          <label for="postTitle">Article Title *</label>
-          <input 
-            type="text" 
-            id="postTitle" 
-            placeholder="e.g., Master Full-Stack Web Development in 2026" 
-            required 
-            class="input-field"
-          >
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="postCategory">Category *</label>
-            <select id="postCategory" class="input-field" required>
-              <option value="Technology">Technology</option>
-              <option value="Web Development">Web Development</option>
-              <option value="AI & Machine Learning">AI & Machine Learning</option>
-              <option value="Tutorials">Tutorials</option>
-              <option value="Design">Design</option>
-              <option value="General">General</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="postAuthor">Author Name</label>
-            <input 
-              type="text" 
-              id="postAuthor" 
-              placeholder="e.g., Zahid Shafiq" 
-              value="Zahid Shafiq" 
-              class="input-field"
-            >
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="postTags">Tags (comma separated)</label>
-            <input 
-              type="text" 
-              id="postTags" 
-              placeholder="e.g., Node, MongoDB, Express, API" 
-              class="input-field"
-            >
-          </div>
-          <div class="form-group">
-            <label for="postReadTime">Read Time (minutes)</label>
-            <input 
-              type="number" 
-              id="postReadTime" 
-              value="4" 
-              min="1" 
-              class="input-field"
-            >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="postCoverImage">Cover Image URL</label>
-          <input 
-            type="url" 
-            id="postCoverImage" 
-            placeholder="https://images.unsplash.com/..." 
-            value="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80" 
-            class="input-field"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="postSnippet">Summary / Snippet *</label>
-          <textarea 
-            id="postSnippet" 
-            rows="2" 
-            placeholder="Brief overview shown on the card preview..." 
-            required 
-            class="input-field"
-          ></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="postContent">Full Content (Markdown / Text) *</label>
-          <textarea 
-            id="postContent" 
-            rows="8" 
-            placeholder="Write full article here. Subheadings, bullet points and paragraphs supported..." 
-            required 
-            class="input-field"
-          ></textarea>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeEditorModal()">Cancel</button>
-          <button type="submit" class="btn btn-primary" id="savePostBtn">
-            <i class="fa-solid fa-cloud-arrow-up"></i> Publish to Backend
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal: Backend API Inspector & Architecture Guide -->
-  <div class="modal-backdrop" id="apiModal">
-    <div class="modal-card api-modal-card">
-      <div class="modal-header">
-        <h2><i class="fa-solid fa-network-wired"></i> Backend Architecture & API Tester</h2>
-        <button class="modal-close-btn" onclick="closeApiModal()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="modal-body api-modal-body">
-        
-        <!-- Live Status Card -->
-        <div class="diagnostics-card">
-          <div class="diag-header">
-            <h4>Live Server Telemetry</h4>
-            <button class="btn btn-sm btn-secondary" onclick="checkBackendHealth()">
-              <i class="fa-solid fa-rotate"></i> Ping Server
-            </button>
-          </div>
-          <div class="diag-grid" id="diagGrid">
-            <div class="diag-item">
-              <span class="diag-label">Server</span>
-              <span class="diag-val" id="diagServer">Node.js + Express</span>
-            </div>
-            <div class="diag-item">
-              <span class="diag-label">Database</span>
-              <span class="diag-val" id="diagDb">Checking...</span>
-            </div>
-            <div class="diag-item">
-              <span class="diag-label">Port</span>
-              <span class="diag-val" id="diagPort">5000</span>
-            </div>
-            <div class="diag-item">
-              <span class="diag-label">Total Posts</span>
-              <span class="diag-val" id="diagCount">0</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Endpoints List -->
-        <h4 class="section-title">Available REST API Endpoints</h4>
-        <div class="endpoint-list">
-          <div class="endpoint-card">
-            <div class="ep-badge get">GET</div>
-            <div class="ep-url">/api/posts</div>
-            <div class="ep-desc">Retrieve list of posts (supports <code>?search=</code>, <code>?category=</code>)</div>
-            <a href="/api/posts" target="_blank" class="ep-test-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge post">POST</div>
-            <div class="ep-url">/api/posts</div>
-            <div class="ep-desc">Create a new blog post with JSON body (title, content, category, etc.)</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge get">GET</div>
-            <div class="ep-url">/api/posts/:id</div>
-            <div class="ep-desc">Retrieve a single blog post by its unique ID</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge put">PUT</div>
-            <div class="ep-url">/api/posts/:id</div>
-            <div class="ep-desc">Update an existing blog post</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge delete">DELETE</div>
-            <div class="ep-url">/api/posts/:id</div>
-            <div class="ep-desc">Permanently remove post from database</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge post">POST</div>
-            <div class="ep-url">/api/posts/:id/like</div>
-            <div class="ep-desc">Increment like counter for an article</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge post">POST</div>
-            <div class="ep-url">/api/posts/:id/comments</div>
-            <div class="ep-desc">Add reader comment to article</div>
-          </div>
-
-          <div class="endpoint-card">
-            <div class="ep-badge get">GET</div>
-            <div class="ep-url">/api/status</div>
-            <div class="ep-desc">Server health, MongoDB status, and uptime</div>
-            <a href="/api/status" target="_blank" class="ep-test-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-
-        <!-- Architecture Flow -->
-        <h4 class="section-title">Backend Architecture Flow</h4>
-        <div class="arch-box">
-          <div class="arch-step">
-            <div class="step-num">1</div>
-            <div><strong>Browser / Client</strong>: Sends HTTP request via <code>fetch('/api/posts')</code></div>
-          </div>
-          <div class="arch-step">
-            <div class="step-num">2</div>
-            <div><strong>Express Router</strong>: Routes request to matching controller (<code>postController.js</code>)</div>
-          </div>
-          <div class="arch-step">
-            <div class="step-num">3</div>
-            <div><strong>Mongoose Model</strong>: Validates schema and performs MongoDB queries (<code>Post.find()</code>)</div>
-          </div>
-          <div class="arch-step">
-            <div class="step-num">4</div>
-            <div><strong>MongoDB Database</strong>: Stores document data in collections permanently</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer"></div>
 
   <script src="app.js"></script>
 </body>
