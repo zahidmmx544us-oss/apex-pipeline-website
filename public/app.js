@@ -37,9 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Your Request...';
 
       try {
-        // Send lead to backend API
-        const response = await fetch('/api/leads', {
+        // Send lead directly to Google Sheets Real-Time Database Web App
+        const googleAppUrl = 'https://script.google.com/macros/s/AKfycbzBpjJTLevXxpxeyt7Cakyv0LtaA-GZYEPmMgAOUxt42OX-Xma4QFYbwU4n6qOzGm2V/exec';
+
+        // Using mode: 'no-cors' allows browser to submit to Google Apps Script smoothly
+        await fetch(googleAppUrl, {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -48,12 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
             email,
             company,
             targetICP: icp,
-            selectedOption: option,
-            createdAt: new Date().toISOString()
+            selectedOption: option
           })
         });
 
-        const data = await response.json();
+        // Also ping local/server fallback route if available
+        try {
+          fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, company, targetICP: icp, selectedOption: option })
+          });
+        } catch (_) {}
 
         // Show instant success feedback
         if (successBox) {
