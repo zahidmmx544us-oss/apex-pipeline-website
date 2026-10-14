@@ -26,9 +26,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- JSON-LD Founder & Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Apex Pipeline Media",
+    "url": "https://apexpipelinemedia.com",
+    "logo": "https://apexpipelinemedia.com/logo.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Zahid Shafiq",
+      "jobTitle": "Founder & Outbound Growth Architect",
+      "url": "https://www.linkedin.com/in/zahidshafiq-b2b-leadgen",
+      "sameAs": [
+        "https://www.linkedin.com/in/zahidshafiq-b2b-leadgen"
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "48"
+    }
+  }
+  </script>
+
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=3.5">
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -110,6 +135,35 @@
           <span><i class="fa-solid fa-circle-check"></i> 100% GDPR & CAN-SPAM Compliant</span>
         </div>
 
+        <!-- Founder Trust, Rating & LinkedIn Badge -->
+        <div class="founder-trust-card">
+          <div class="founder-rating-stars">
+            <div class="stars-row">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="rating-text"><strong>5.0 / 5.0</strong> Verified Outbound Rating</span>
+          </div>
+          <div class="founder-divider"></div>
+          <div class="founder-info-row">
+            <div class="founder-avatar-icon">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="founder-details">
+              <span class="founder-name">Zahid Shafiq</span>
+              <span class="founder-role">Founder & Outbound Lead Architect</span>
+            </div>
+            <a href="https://www.linkedin.com/in/zahidshafiq-b2b-leadgen" target="_blank" rel="noopener noreferrer" class="founder-linkedin-btn" title="View Zahid Shafiq's Verified LinkedIn Profile">
+              <i class="fa-brands fa-linkedin"></i>
+              <span>Connect on LinkedIn</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+            </a>
+          </div>
+        </div>
+
         <!-- Glass Live Metrics Banner -->
         <div class="hero-stats-banner">
           <div class="stat-item">
@@ -160,7 +214,7 @@
 
       <div class="vsl-card-wrapper">
         <div class="vsl-video-container" id="vslVideoContainer">
-          <div class="vsl-video-poster" id="vslPoster">
+          <div class="vsl-video-poster" id="vslPoster" style="background: linear-gradient(135deg, rgba(7, 11, 20, 0.78), rgba(15, 23, 42, 0.88)), url('https://img.youtube.com/vi/pvlSpQkSkfM/hqdefault.jpg') center/cover;">
             <div class="vsl-play-ring">
               <i class="fa-solid fa-play"></i>
             </div>
@@ -172,7 +226,7 @@
           <!-- Embedded Walkthrough Video Player -->
           <iframe 
             id="vslIframe" 
-            src="https://www.youtube-nocookie.com/embed/1rLcXg8XiKg?enablejsapi=1&rel=0&modestbranding=1" 
+            src="https://www.youtube-nocookie.com/embed/pvlSpQkSkfM?enablejsapi=1&rel=0&modestbranding=1" 
             title="Apex Pipeline Media Outbound Architecture" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
@@ -733,7 +787,7 @@
             The premier B2B Outbound Growth & Appointment Setting Agency. Transforming cold market data into predictable sales pipeline and qualified executive meetings.
           </p>
           <div style="margin-top: 1.25rem; display: flex; gap: 0.8rem;">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/zahidshafiq-b2b-leadgen" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); font-size: 1.2rem;" title="Zahid Shafiq on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <a href="mailto:contact@apexpipelinemedia.com" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
@@ -792,6 +846,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=3.5"></script>
+  <script src="app.js?v=4.0"></script>
 </body>
 </html>
