@@ -28,7 +28,7 @@
   
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=3.0">
+  <link rel="stylesheet" href="style.css?v=3.5">
 </head>
 <body>
 
@@ -52,20 +52,20 @@
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
+          <li><a href="#vsl">Walkthrough</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#verification">7-Stage Verification</a></li>
-          <li><a href="#process">How It Works</a></li>
-          <li><a href="#industries">Industries</a></li>
+          <li><a href="#fit">Are You A Fit?</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="#sample-form" class="btn btn-secondary">
+        <a href="#sample-form" class="btn btn-secondary" onclick="window.switchConversionTab && window.switchConversionTab('leads')">
           <i class="fa-solid fa-gift"></i>
           <span>Free 25 Leads</span>
         </a>
-        <a href="#sample-form" class="btn btn-primary btn-glow">
+        <a href="#sample-form" class="btn btn-primary btn-glow" onclick="window.switchConversionTab && window.switchConversionTab('calendar')">
           <i class="fa-regular fa-calendar-check"></i>
           <span>Book Strategy Call</span>
         </a>
@@ -145,6 +145,69 @@
         <div class="tech-logo-item"><i class="fa-solid fa-fire-flame-curved"></i> Smartlead</div>
         <div class="tech-logo-item"><i class="fa-solid fa-layer-group"></i> Clay.com</div>
         <div class="tech-logo-item"><i class="fa-brands fa-hubspot"></i> HubSpot CRM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VSL / System Walkthrough Section -->
+  <section class="vsl-section" id="vsl">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-play"></i> Live Engine Walkthrough</span>
+        <h2>How We Generate 15–30 Qualified Meetings / Month</h2>
+        <p>Watch the exact step-by-step process we use to build dedicated cold outreach infrastructure, verify decision-maker data, and book high-ticket B2B sales calls on autopilot.</p>
+      </div>
+
+      <div class="vsl-card-wrapper">
+        <div class="vsl-video-container" id="vslVideoContainer">
+          <div class="vsl-video-poster" id="vslPoster">
+            <div class="vsl-play-ring">
+              <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="vsl-poster-badge">
+              <span class="pulse-dot"></span>
+              <span>Click To Watch 3-Min Architecture Walkthrough</span>
+            </div>
+          </div>
+          <!-- Embedded Walkthrough Video Player -->
+          <iframe 
+            id="vslIframe" 
+            src="https://www.youtube-nocookie.com/embed/1rLcXg8XiKg?enablejsapi=1&rel=0&modestbranding=1" 
+            title="Apex Pipeline Media Outbound Architecture" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="vsl-features-grid">
+          <div class="vsl-feature-item">
+            <i class="fa-solid fa-crosshairs"></i>
+            <h4>Surgical ICP Scraping</h4>
+            <p>Direct C-Suite data enrichment across Apollo & Sales Nav</p>
+          </div>
+          <div class="vsl-feature-item">
+            <i class="fa-solid fa-shield-virus"></i>
+            <h4>Zero Spam Traps</h4>
+            <p>7-stage verification eliminates bounces before sending</p>
+          </div>
+          <div class="vsl-feature-item">
+            <i class="fa-solid fa-server"></i>
+            <h4>Isolated Domains</h4>
+            <p>Secondary domains with full SPF, DKIM, and DMARC</p>
+          </div>
+          <div class="vsl-feature-item">
+            <i class="fa-regular fa-calendar-check"></i>
+            <h4>Done-For-You Booking</h4>
+            <p>Our team handles responses and lands meetings in your calendar</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center;">
+          <a href="#sample-form" class="btn btn-primary btn-glow" onclick="window.switchConversionTab && window.switchConversionTab('calendar')" style="padding: 1rem 2.2rem; font-size: 1rem;">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Schedule Your 20-Min Pipeline Strategy Call</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -390,6 +453,87 @@
     </div>
   </section>
 
+  <!-- Interactive Self-Qualification Section -->
+  <section class="fit-section" id="fit">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-tag"><i class="fa-solid fa-clipboard-check"></i> Interactive Assessment</span>
+        <h2>Are You A Fit For Guaranteed Outbound?</h2>
+        <p>We work exclusively with high-ticket B2B companies with capacity to close 3–10 enterprise deals per month. Select all criteria that apply to your business.</p>
+      </div>
+
+      <div class="fit-container-wrapper">
+        <div class="fit-checklist" id="fitChecklist">
+          
+          <div class="fit-card selected" data-score="20">
+            <div class="fit-checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fit-text">
+              <div class="fit-text-title">B2B SaaS, Agency, or Consulting Firm with $3k+ ACV / Retainer</div>
+              <p class="fit-text-desc">You sell a high-value service, platform, or contract with clear ROI for decision makers.</p>
+            </div>
+          </div>
+
+          <div class="fit-card selected" data-score="20">
+            <div class="fit-checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fit-text">
+              <div class="fit-text-title">Seeking 15–30 Qualified C-Suite / Executive Meetings Monthly</div>
+              <p class="fit-text-desc">You need a predictable outbound machine rather than relying on inconsistent word-of-mouth.</p>
+            </div>
+          </div>
+
+          <div class="fit-card selected" data-score="20">
+            <div class="fit-checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fit-text">
+              <div class="fit-text-title">Tired of Burned Domains & Unverified B2B Database Brokers</div>
+              <p class="fit-text-desc">You want custom real-time scraping with 98.5%+ accuracy and a strict &lt;2% bounce guarantee.</p>
+            </div>
+          </div>
+
+          <div class="fit-card" data-score="20">
+            <div class="fit-checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fit-text">
+              <div class="fit-text-title">Targeting US, UK, Canada, or EU Enterprise Decision Makers</div>
+              <p class="fit-text-desc">Your target audience includes CEOs, Founders, VPs, Directors, and senior budget holders.</p>
+            </div>
+          </div>
+
+          <div class="fit-card" data-score="20">
+            <div class="fit-checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fit-text">
+              <div class="fit-text-title">Active Sales Team with Closing Capacity for 3–10 New Clients</div>
+              <p class="fit-text-desc">You or an internal closer have the bandwidth to convert qualified sales meetings into closed revenue.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="fit-result-box">
+          <div class="fit-score-wrapper">
+            <div class="fit-score-header">
+              <span>Outbound Readiness Score:</span>
+              <span id="fitScoreText" style="color: var(--accent-neon);">60% Match</span>
+            </div>
+            <div class="fit-progress-bar">
+              <div class="fit-progress-fill" id="fitProgressFill" style="width: 60%;"></div>
+            </div>
+          </div>
+
+          <div class="fit-status-banner" id="fitStatusBanner">
+            ⚡ Strong Match: Your business profile qualifies for guaranteed outbound rollout!
+          </div>
+          <p class="fit-status-sub" id="fitStatusSub">
+            Our data engineering team has capacity to onboard only 3 new clients this month. Proceed below to reserve your slot and claim your 25 free leads.
+          </p>
+
+          <a href="#sample-form" class="btn btn-primary btn-glow" onclick="window.switchConversionTab && window.switchConversionTab('calendar')" style="padding: 1rem 2.25rem; font-size: 1.05rem;">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Proceed To Strategy Call & Reserve Q4 Slot →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- High-Converting CTA / Free Sample Section -->
   <section class="cta-form-section" id="sample-form">
     <div class="container">
@@ -417,55 +561,93 @@
             </div>
           </div>
 
-          <!-- Interactive Request Form -->
-          <div class="form-card">
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.35rem; color: #ffffff;">Claim Your Free 25 Leads</h3>
-            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">Fill out this 30-second form to initiate your custom data run.</p>
-
-            <form id="leadRequestForm">
-              <div class="form-group">
-                <label class="form-label" for="clientName">Your Full Name *</label>
-                <input class="form-input" type="text" id="clientName" placeholder="e.g. Zahid Shafiq" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="clientEmail">Your Business Email *</label>
-                <input class="form-input" type="email" id="clientEmail" placeholder="e.g. name@yourcompany.com" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="clientCompany">Company Website / LinkedIn *</label>
-                <input class="form-input" type="text" id="clientCompany" placeholder="e.g. https://yourcompany.com" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="clientICP">Target Decision Maker & Industry *</label>
-                <input class="form-input" type="text" id="clientICP" placeholder="e.g. US Tech CEOs or UK Real Estate Directors" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="preferredCall">Select Option</label>
-                <select class="form-select" id="preferredCall">
-                  <option value="leads_and_strategy">Send Free 25 Leads + Schedule Strategy Call</option>
-                  <option value="leads_only">Send Free 25 Leads via Email First</option>
-                  <option value="instant_call">I want to book an immediate 15-min strategy call</option>
-                </select>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-glow form-submit-btn" id="submitFormBtn">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Get 25 Free Leads & Pipeline Blueprint</span>
+          <!-- Dual-Action Conversion Hub: Calendly Booking + Free 25 Leads Form -->
+          <div class="form-card" id="conversionHubCard">
+            
+            <div class="conversion-hub-tabs" role="tablist">
+              <button type="button" class="hub-tab-btn active" id="tabCalendlyBtn" role="tab" aria-selected="true">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Book Strategy Call</span>
               </button>
+              <button type="button" class="hub-tab-btn" id="tabSampleFormBtn" role="tab" aria-selected="false">
+                <i class="fa-solid fa-gift"></i>
+                <span>Claim 25 Free Leads</span>
+              </button>
+            </div>
 
-              <div class="form-disclaimer">
-                <i class="fa-solid fa-lock" style="margin-right: 4px;"></i> We respect your privacy. No spam. 100% Confidential.
+            <!-- Tab 1: Live 1-on-1 Strategy Call Scheduler -->
+            <div class="hub-tab-pane active" id="paneCalendly">
+              <div style="margin-bottom: 1.25rem;">
+                <h3 style="font-size: 1.35rem; margin-bottom: 0.35rem; color: #ffffff;">Pick A Strategy Call Time</h3>
+                <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">20-minute 1-on-1 strategy call with our Outbound Lead Engineer. We'll map out your exact Total Addressable Market (TAM) and review your cold outreach roadmap.</p>
               </div>
 
-              <div class="form-notification" id="formSuccessMessage">
-                <strong><i class="fa-solid fa-circle-check"></i> Request Received!</strong><br>
-                Our data research team has received your criteria. We are building your 25 verified leads and will dispatch them to your email shortly.
+              <div class="calendly-card-wrapper">
+                <div class="calendly-header-strip">
+                  <span><i class="fa-solid fa-bolt-lightning"></i> Instant Confirmation & Google Meet Link</span>
+                  <span style="color: var(--text-muted); font-size: 0.78rem;">Zero Sales Pressure</span>
+                </div>
+                <!-- Inline Calendly Embed with dark styling matching website -->
+                <iframe 
+                  src="https://calendly.com/smartclickinternational9/30min?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=070b14&text_color=ffffff&primary_color=10b981" 
+                  class="calendly-frame" 
+                  title="Schedule a Call with Apex Pipeline Media"
+                  loading="lazy">
+                </iframe>
               </div>
-            </form>
+            </div>
+
+            <!-- Tab 2: Free 25 Verified Leads Form (Instant Google Sheets Real-Time Sync) -->
+            <div class="hub-tab-pane" id="paneSampleForm">
+              <h3 style="font-size: 1.35rem; margin-bottom: 0.35rem; color: #ffffff;">Claim Your Free 25 Verified Leads</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">Fill out this 30-second form to initiate your custom data run with 98.5%+ verified accuracy.</p>
+
+              <form id="leadRequestForm">
+                <div class="form-group">
+                  <label class="form-label" for="clientName">Your Full Name *</label>
+                  <input class="form-input" type="text" id="clientName" placeholder="e.g. Zahid Shafiq" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="clientEmail">Your Business Email *</label>
+                  <input class="form-input" type="email" id="clientEmail" placeholder="e.g. name@yourcompany.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="clientCompany">Company Website / LinkedIn *</label>
+                  <input class="form-input" type="text" id="clientCompany" placeholder="e.g. https://yourcompany.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="clientICP">Target Decision Maker & Industry *</label>
+                  <input class="form-input" type="text" id="clientICP" placeholder="e.g. US Tech CEOs or UK Real Estate Directors" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="preferredCall">Select Option</label>
+                  <select class="form-select" id="preferredCall">
+                    <option value="leads_and_strategy">Send Free 25 Leads + Schedule Strategy Call</option>
+                    <option value="leads_only">Send Free 25 Leads via Email First</option>
+                    <option value="instant_call">I want to book an immediate 15-min strategy call</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-glow form-submit-btn" id="submitFormBtn">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Get 25 Free Leads & Pipeline Blueprint</span>
+                </button>
+
+                <div class="form-disclaimer">
+                  <i class="fa-solid fa-lock" style="margin-right: 4px;"></i> We respect your privacy. No spam. 100% Confidential.
+                </div>
+
+                <div class="form-notification" id="formSuccessMessage">
+                  <strong><i class="fa-solid fa-circle-check"></i> Request Received!</strong><br>
+                  Our data research team has received your criteria. We are building your 25 verified leads and will dispatch them to your email shortly.
+                </div>
+              </form>
+            </div>
+
           </div>
 
         </div>
@@ -610,6 +792,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.1"></script>
+  <script src="app.js?v=3.5"></script>
 </body>
 </html>

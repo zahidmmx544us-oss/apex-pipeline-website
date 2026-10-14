@@ -1170,6 +1170,380 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
 }
 
+/* =========================================
+   1. VSL / Engine Walkthrough Section
+   ========================================= */
+.vsl-section {
+  padding: 5rem 0;
+  position: relative;
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+}
+
+.vsl-card-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(16, 185, 129, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.vsl-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-neon), var(--accent-cyan), transparent);
+}
+
+.vsl-video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #020611;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vsl-video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.vsl-video-poster {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(7, 11, 20, 0.85), rgba(15, 23, 42, 0.95)), radial-gradient(circle at center, rgba(16, 185, 129, 0.2) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.vsl-video-poster:hover {
+  background: linear-gradient(135deg, rgba(7, 11, 20, 0.75), rgba(15, 23, 42, 0.85));
+}
+
+.vsl-play-ring {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #042517;
+  font-size: 2rem;
+  padding-left: 5px;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(0, 245, 160, 0.85);
+  }
+}
+
+.vsl-poster-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius-full);
+  color: var(--accent-neon);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.vsl-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.vsl-feature-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.vsl-feature-item:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.25);
+  transform: translateY(-2px);
+}
+
+.vsl-feature-item i {
+  font-size: 1.25rem;
+  color: var(--accent-neon);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.vsl-feature-item h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.vsl-feature-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* =========================================
+   2. Interactive Self-Qualification Section
+   ========================================= */
+.fit-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, transparent, rgba(16, 185, 129, 0.03) 50%, transparent 100%);
+}
+
+.fit-container-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.fit-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.fit-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.fit-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.03);
+  transform: translateX(4px);
+}
+
+.fit-card.selected {
+  border-color: var(--accent-neon);
+  background: rgba(16, 185, 129, 0.08);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+}
+
+.fit-checkbox {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: transparent;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.fit-card.selected .fit-checkbox {
+  background: var(--accent-neon);
+  border-color: var(--accent-neon);
+  color: #042517;
+  font-weight: 800;
+}
+
+.fit-text {
+  flex: 1;
+}
+
+.fit-text-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.fit-text-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.fit-result-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.fit-score-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.fit-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.fit-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.fit-progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #10b981, #00f5a0);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.fit-status-banner {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.fit-status-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================
+   3. Dual-Tab Conversion Hub (Calendly + Sample)
+   ========================================= */
+.conversion-hub-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.75rem;
+  gap: 0.35rem;
+}
+
+.hub-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.hub-tab-btn:hover {
+  color: #ffffff;
+}
+
+.hub-tab-btn.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #042517;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+.hub-tab-pane {
+  display: none;
+  animation: fadeInPane 0.35s ease;
+}
+
+.hub-tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.calendly-card-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  min-height: 620px;
+}
+
+.calendly-header-strip {
+  padding: 1rem 1.25rem;
+  background: rgba(16, 185, 129, 0.08);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--accent-neon);
+  font-weight: 600;
+}
+
+.calendly-frame {
+  width: 100%;
+  height: 620px;
+  border: none;
+  background: #070b14;
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .hero-title { font-size: 3.2rem; }
@@ -1180,6 +1554,7 @@ h1, h2, h3, h4, h5, h6 {
   .process-timeline::before { display: none; }
   .industries-grid { grid-template-columns: 1fr 1fr; }
   .cta-grid { grid-template-columns: 1fr; }
+  .vsl-features-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -1191,6 +1566,12 @@ h1, h2, h3, h4, h5, h6 {
   .hero-subtitle { font-size: 1.05rem; }
   .hero-stats-banner { grid-template-columns: 1fr 1fr; }
   .stat-item:nth-child(2)::after { display: none; }
+  .vsl-card-wrapper { padding: 1rem; }
+  .vsl-features-grid { grid-template-columns: 1fr; }
+  .conversion-hub-tabs { flex-direction: column; border-radius: var(--radius-lg); }
+  .hub-tab-btn { border-radius: var(--radius-md); }
+  .calendly-frame { height: 680px; }
+  .fit-card { padding: 1rem; gap: 0.85rem; }
   .verification-grid { grid-template-columns: 1fr; }
   .verification-summary-banner { grid-column: span 1; flex-direction: column; text-align: center; gap: 1rem; }
   .process-timeline { grid-template-columns: 1fr; }
